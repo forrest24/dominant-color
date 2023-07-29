@@ -15,4 +15,4 @@ RUN python -m pip install --upgrade pip && \
         django-user
 
 USER django-user
-WORKDIR /app
+WORKDIR /app/backend

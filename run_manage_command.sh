@@ -1,1 +1,1 @@
-docker-compose -f docker-compose-dev.yml run --rm django python backend/manage.py "$@"
+docker-compose -f docker-compose-dev.yml run --rm django python manage.py "$@"

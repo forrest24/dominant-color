@@ -4,6 +4,7 @@ ENV PYTHONUNBUFFERED 1
 
 COPY ./backend/requirements /requirements
 COPY ./backend /app/backend
+COPY ./.flake8 /.flake8
 
 RUN python -m pip install --upgrade pip && \
     python -m pip install -r /requirements/dev.txt && \

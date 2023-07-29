@@ -18,4 +18,4 @@ jobs:
       - name: Lint
         run: docker-compose -f docker-compose-dev.yml run --rm django sh -c "flake8"
       - name: Test
-        run: docker-compose -f docker-compose-dev.yml run --rm django sh -c "python manage.py wait_for_db && python backend/manage.py test"
+        run: docker-compose -f docker-compose-dev.yml run --rm django sh -c "python manage.py wait_for_db && python manage.py test"

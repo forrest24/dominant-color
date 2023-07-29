@@ -1,0 +1,6 @@
+# GIT
+.git/
+.gitignore
+
+# Python
+.venv/

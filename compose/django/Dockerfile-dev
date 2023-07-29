@@ -1,0 +1,17 @@
+FROM python:3.11
+
+ENV PYTHONUNBUFFERED 1
+
+COPY ./backend/requirements /requirements
+COPY ./backend /app/backend
+
+RUN python -m pip install --upgrade pip && \
+    python -m pip install -r /requirements/dev.txt && \
+    rm -rf /requirements && \
+    adduser \
+        --disabled-password \
+        --no-create-home \
+        django-user
+
+USER django-user
+WORKDIR /app

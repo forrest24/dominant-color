@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=dev_db
+      - POSTGRES_USER=dev_user
+      - POSTGRES_PASSWORD=dev_pass
+    volumes:
+      - /var/lib/postgresql/data
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile-dev
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=dev_db
+      - DB_USER=dev_user
+      - DB_PASS=dev_pass
+    volumes:
+      - ./backend:/app/backend
+    command: python backend/manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db

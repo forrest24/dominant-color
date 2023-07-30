@@ -1,3 +1,5 @@
+import os
+import time
 from collections import defaultdict
 
 import requests
@@ -20,8 +22,10 @@ class DominantColorAlgorithm:
             chrome_options.add_argument('--disable-gpu')
             chrome_options.add_argument('--disable-dev-shm-usage')
             driver = webdriver.Chrome(options=chrome_options)
-
             driver.get(self.url)
+
+            time.sleep(1)
+
             driver.save_screenshot('current.png')
             driver.quit()
         except WebDriverException:
@@ -31,7 +35,6 @@ class DominantColorAlgorithm:
 
     def get_dominant(self):
         image = Image.open('current.png')
-        image.thumbnail((100, 100))
 
         colors = defaultdict(int)
         for rgb in image.getdata():
@@ -45,6 +48,8 @@ class DominantColorAlgorithm:
         dominant_color_rgb = list(ordered_colors.keys())[0]
 
         response = requests.get(f'http://www.thecolorapi.com/id?rgb=rgb{dominant_color_rgb}').json()
+
+        os.remove('current.png')
 
         return dominant_color_rgb, response['name']['value']
 

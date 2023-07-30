@@ -21,9 +21,9 @@ class DominantColor(APIView):
             return Response('Invalid or missing url. Provide a valid URL', status.HTTP_400_BAD_REQUEST)
 
         algorithm = DominantColorAlgorithm(url)
-        rgb, dominant_color = algorithm.get_dominant_color()
+        rgb, dominant_color, error = algorithm.get_dominant_color()
 
-        if not dominant_color:
-            return Response('Unable to determine dominant color', status.HTTP_400_BAD_REQUEST)
+        if error:
+            return Response(error, status.HTTP_400_BAD_REQUEST)
 
         return Response({"rgb": rgb, "dominant_color": dominant_color})

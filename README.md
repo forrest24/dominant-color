@@ -14,5 +14,5 @@ You can use any API client like Postman or simply your web browser to test the A
 `GET http://127.0.0.1:8000/api/colors/dominant_color?url=<url>`
 
 # Additional Information
-For more information on how the API works or to explore the available endpoints, you can visit /api/docs once the API server is running. This will provide you with an interactive documentation that details each endpoint and its usage.
+For more information on how the API works or to explore the available endpoints, you can visit `/api/docs` once the API server is running. This will provide you with an interactive documentation that details each endpoint and its usage.
 

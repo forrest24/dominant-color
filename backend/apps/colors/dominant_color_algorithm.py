@@ -40,6 +40,8 @@ class DominantColorAlgorithm:
             colors[(rgb[0], rgb[1], rgb[2])] += 1
 
         ordered_colors = {k: v for k, v in sorted(colors.items(), key=lambda item: item[1], reverse=True)}
+        if len(ordered_colors) == 0:
+            return False, False
         dominant_color_rgb = list(ordered_colors.keys())[0]
 
         response = requests.get(f'http://www.thecolorapi.com/id?rgb=rgb{dominant_color_rgb}').json()

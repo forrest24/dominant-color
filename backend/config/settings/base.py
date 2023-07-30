@@ -21,7 +21,8 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.common.apps.CommonConfig'
+    'apps.common.apps.CommonConfig',
+    'apps.colors.apps.ColorsConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
